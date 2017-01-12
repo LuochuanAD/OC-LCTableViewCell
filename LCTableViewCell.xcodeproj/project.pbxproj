@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		44EB6FCA1E273A4900CFA3FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EB6FC91E273A4900CFA3FC /* main.m */; };
 		44EB6FCD1E273A4900CFA3FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EB6FCC1E273A4900CFA3FC /* AppDelegate.m */; };
-		44EB6FD01E273A4900CFA3FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EB6FCF1E273A4900CFA3FC /* ViewController.m */; };
-		44EB6FD31E273A4900CFA3FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44EB6FD11E273A4900CFA3FC /* Main.storyboard */; };
 		44EB6FD51E273A4900CFA3FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44EB6FD41E273A4900CFA3FC /* Assets.xcassets */; };
 		44EB6FD81E273A4900CFA3FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44EB6FD61E273A4900CFA3FC /* LaunchScreen.storyboard */; };
+		44EB6FE31E273A8D00CFA3FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EB6FE01E273A8D00CFA3FC /* TableViewController.m */; };
+		44EB6FE41E273A8D00CFA3FC /* LCDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EB6FE21E273A8D00CFA3FC /* LCDeleteTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +20,13 @@
 		44EB6FC91E273A4900CFA3FC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		44EB6FCB1E273A4900CFA3FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		44EB6FCC1E273A4900CFA3FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		44EB6FCE1E273A4900CFA3FC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		44EB6FCF1E273A4900CFA3FC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		44EB6FD21E273A4900CFA3FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44EB6FD41E273A4900CFA3FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44EB6FD71E273A4900CFA3FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44EB6FD91E273A4900CFA3FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44EB6FDF1E273A8D00CFA3FC /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		44EB6FE01E273A8D00CFA3FC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		44EB6FE11E273A8D00CFA3FC /* LCDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCDeleteTableViewCell.h; sourceTree = "<group>"; };
+		44EB6FE21E273A8D00CFA3FC /* LCDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCDeleteTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +61,10 @@
 			children = (
 				44EB6FCB1E273A4900CFA3FC /* AppDelegate.h */,
 				44EB6FCC1E273A4900CFA3FC /* AppDelegate.m */,
-				44EB6FCE1E273A4900CFA3FC /* ViewController.h */,
-				44EB6FCF1E273A4900CFA3FC /* ViewController.m */,
-				44EB6FD11E273A4900CFA3FC /* Main.storyboard */,
+				44EB6FDF1E273A8D00CFA3FC /* TableViewController.h */,
+				44EB6FE01E273A8D00CFA3FC /* TableViewController.m */,
+				44EB6FE11E273A8D00CFA3FC /* LCDeleteTableViewCell.h */,
+				44EB6FE21E273A8D00CFA3FC /* LCDeleteTableViewCell.m */,
 				44EB6FD41E273A4900CFA3FC /* Assets.xcassets */,
 				44EB6FD61E273A4900CFA3FC /* LaunchScreen.storyboard */,
 				44EB6FD91E273A4900CFA3FC /* Info.plist */,
@@ -140,7 +142,6 @@
 			files = (
 				44EB6FD81E273A4900CFA3FC /* LaunchScreen.storyboard in Resources */,
 				44EB6FD51E273A4900CFA3FC /* Assets.xcassets in Resources */,
-				44EB6FD31E273A4900CFA3FC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,23 +152,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44EB6FD01E273A4900CFA3FC /* ViewController.m in Sources */,
+				44EB6FE41E273A8D00CFA3FC /* LCDeleteTableViewCell.m in Sources */,
 				44EB6FCD1E273A4900CFA3FC /* AppDelegate.m in Sources */,
 				44EB6FCA1E273A4900CFA3FC /* main.m in Sources */,
+				44EB6FE31E273A8D00CFA3FC /* TableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		44EB6FD11E273A4900CFA3FC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				44EB6FD21E273A4900CFA3FC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		44EB6FD61E273A4900CFA3FC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -219,7 +213,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -261,7 +255,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -272,9 +266,9 @@
 		44EB6FDD1E273A4900CFA3FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8JG65G992A;
 				INFOPLIST_FILE = LCTableViewCell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = come.luochuanAD.LCTableViewCell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -284,9 +278,9 @@
 		44EB6FDE1E273A4900CFA3FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8JG65G992A;
 				INFOPLIST_FILE = LCTableViewCell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = come.luochuanAD.LCTableViewCell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -312,6 +306,7 @@
 				44EB6FDE1E273A4900CFA3FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
