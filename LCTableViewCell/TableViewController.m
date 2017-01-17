@@ -42,7 +42,7 @@
     if (!cell) {
         cell=[[LCDeleteTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:strID];
     }
-    cell.tag=indexPath.row+100;//重要:标记cell的tag值
+    
     [cell setMessageForCellString1:[mutArray[indexPath.row][0] objectForKey:@"top"] withString2:[mutArray[indexPath.row][1] objectForKey:@"top1"] withString3:[mutArray[indexPath.row][2] objectForKey:@"top2"]];
     cell.delegate=self;//设置代理
     return cell;
