@@ -14,7 +14,7 @@
 		803D00041F2F1C810011DF7B /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803DFFFF1F2F1C810011DF7B /* TableViewController.m */; };
 		803D00051F2F1C810011DF7B /* LCDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803D00011F2F1C810011DF7B /* LCDeleteTableViewCell.m */; };
 		803D00061F2F1C810011DF7B /* LCSourcesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 803D00031F2F1C810011DF7B /* LCSourcesModel.m */; };
-		803DFFFD1F2F1C560011DF7B /* 左划多个按钮.gif in Resources */ = {isa = PBXBuildFile; fileRef = 803DFFFC1F2F1C560011DF7B /* 左划多个按钮.gif */; };
+		803D00081F2F1E580011DF7B /* 左划多个按钮.gif in Resources */ = {isa = PBXBuildFile; fileRef = 803D00071F2F1E580011DF7B /* 左划多个按钮.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		803D00011F2F1C810011DF7B /* LCDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCDeleteTableViewCell.m; sourceTree = "<group>"; };
 		803D00021F2F1C810011DF7B /* LCSourcesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCSourcesModel.h; sourceTree = "<group>"; };
 		803D00031F2F1C810011DF7B /* LCSourcesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCSourcesModel.m; sourceTree = "<group>"; };
-		803DFFFC1F2F1C560011DF7B /* 左划多个按钮.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "左划多个按钮.gif"; sourceTree = "<group>"; };
+		803D00071F2F1E580011DF7B /* 左划多个按钮.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "左划多个按钮.gif"; sourceTree = "<group>"; };
 		803DFFFE1F2F1C810011DF7B /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		803DFFFF1F2F1C810011DF7B /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,7 +73,7 @@
 				803D00021F2F1C810011DF7B /* LCSourcesModel.h */,
 				803D00031F2F1C810011DF7B /* LCSourcesModel.m */,
 				44EB6FD41E273A4900CFA3FC /* Assets.xcassets */,
-				803DFFFC1F2F1C560011DF7B /* 左划多个按钮.gif */,
+				803D00071F2F1E580011DF7B /* 左划多个按钮.gif */,
 				44EB6FD61E273A4900CFA3FC /* LaunchScreen.storyboard */,
 				44EB6FD91E273A4900CFA3FC /* Info.plist */,
 				44EB6FC81E273A4900CFA3FC /* Supporting Files */,
@@ -149,7 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44EB6FD81E273A4900CFA3FC /* LaunchScreen.storyboard in Resources */,
-				803DFFFD1F2F1C560011DF7B /* 左划多个按钮.gif in Resources */,
+				803D00081F2F1E580011DF7B /* 左划多个按钮.gif in Resources */,
 				44EB6FD51E273A4900CFA3FC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
