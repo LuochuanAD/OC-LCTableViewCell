@@ -1,7 +1,6 @@
 # OC-LCTableViewCell
 基于系统原生左划出现多个按钮
 
-![image](http://img.blog.csdn.net/20170731165609496)
 
 ![image](https://github.com/LuochuanAD/OC-LCTableViewCell/blob/master/LCTableViewCell/左划多个按钮.gif)
 
