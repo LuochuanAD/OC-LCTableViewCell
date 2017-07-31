@@ -75,7 +75,7 @@
             _downLoadButton=[self createDownLoadButton];
             _downLoadButton.frame=CGRectMake(subView.frame.size.width/2, 0, subView.frame.size.width/2, subView.frame.size.height);
             if (downLoadLableText.length==0) {
-                downLoadLableText=@"未知";
+                downLoadLableText=@"下载";
             }
             [_downLoadButton setTitle:downLoadLableText forState:UIControlStateNormal];
             [subView addSubview:_downLoadButton];
