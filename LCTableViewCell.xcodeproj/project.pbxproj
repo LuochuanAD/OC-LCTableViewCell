@@ -11,8 +11,10 @@
 		44EB6FCD1E273A4900CFA3FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EB6FCC1E273A4900CFA3FC /* AppDelegate.m */; };
 		44EB6FD51E273A4900CFA3FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44EB6FD41E273A4900CFA3FC /* Assets.xcassets */; };
 		44EB6FD81E273A4900CFA3FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44EB6FD61E273A4900CFA3FC /* LaunchScreen.storyboard */; };
-		44EB6FE31E273A8D00CFA3FC /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EB6FE01E273A8D00CFA3FC /* TableViewController.m */; };
-		44EB6FE41E273A8D00CFA3FC /* LCDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EB6FE21E273A8D00CFA3FC /* LCDeleteTableViewCell.m */; };
+		803D00041F2F1C810011DF7B /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 803DFFFF1F2F1C810011DF7B /* TableViewController.m */; };
+		803D00051F2F1C810011DF7B /* LCDeleteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 803D00011F2F1C810011DF7B /* LCDeleteTableViewCell.m */; };
+		803D00061F2F1C810011DF7B /* LCSourcesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 803D00031F2F1C810011DF7B /* LCSourcesModel.m */; };
+		803DFFFD1F2F1C560011DF7B /* 左划多个按钮.gif in Resources */ = {isa = PBXBuildFile; fileRef = 803DFFFC1F2F1C560011DF7B /* 左划多个按钮.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,10 +25,13 @@
 		44EB6FD41E273A4900CFA3FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44EB6FD71E273A4900CFA3FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44EB6FD91E273A4900CFA3FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44EB6FDF1E273A8D00CFA3FC /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
-		44EB6FE01E273A8D00CFA3FC /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		44EB6FE11E273A8D00CFA3FC /* LCDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCDeleteTableViewCell.h; sourceTree = "<group>"; };
-		44EB6FE21E273A8D00CFA3FC /* LCDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCDeleteTableViewCell.m; sourceTree = "<group>"; };
+		803D00001F2F1C810011DF7B /* LCDeleteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCDeleteTableViewCell.h; sourceTree = "<group>"; };
+		803D00011F2F1C810011DF7B /* LCDeleteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCDeleteTableViewCell.m; sourceTree = "<group>"; };
+		803D00021F2F1C810011DF7B /* LCSourcesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCSourcesModel.h; sourceTree = "<group>"; };
+		803D00031F2F1C810011DF7B /* LCSourcesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCSourcesModel.m; sourceTree = "<group>"; };
+		803DFFFC1F2F1C560011DF7B /* 左划多个按钮.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "左划多个按钮.gif"; sourceTree = "<group>"; };
+		803DFFFE1F2F1C810011DF7B /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		803DFFFF1F2F1C810011DF7B /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,11 +66,14 @@
 			children = (
 				44EB6FCB1E273A4900CFA3FC /* AppDelegate.h */,
 				44EB6FCC1E273A4900CFA3FC /* AppDelegate.m */,
-				44EB6FDF1E273A8D00CFA3FC /* TableViewController.h */,
-				44EB6FE01E273A8D00CFA3FC /* TableViewController.m */,
-				44EB6FE11E273A8D00CFA3FC /* LCDeleteTableViewCell.h */,
-				44EB6FE21E273A8D00CFA3FC /* LCDeleteTableViewCell.m */,
+				803DFFFE1F2F1C810011DF7B /* TableViewController.h */,
+				803DFFFF1F2F1C810011DF7B /* TableViewController.m */,
+				803D00001F2F1C810011DF7B /* LCDeleteTableViewCell.h */,
+				803D00011F2F1C810011DF7B /* LCDeleteTableViewCell.m */,
+				803D00021F2F1C810011DF7B /* LCSourcesModel.h */,
+				803D00031F2F1C810011DF7B /* LCSourcesModel.m */,
 				44EB6FD41E273A4900CFA3FC /* Assets.xcassets */,
+				803DFFFC1F2F1C560011DF7B /* 左划多个按钮.gif */,
 				44EB6FD61E273A4900CFA3FC /* LaunchScreen.storyboard */,
 				44EB6FD91E273A4900CFA3FC /* Info.plist */,
 				44EB6FC81E273A4900CFA3FC /* Supporting Files */,
@@ -141,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44EB6FD81E273A4900CFA3FC /* LaunchScreen.storyboard in Resources */,
+				803DFFFD1F2F1C560011DF7B /* 左划多个按钮.gif in Resources */,
 				44EB6FD51E273A4900CFA3FC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,10 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44EB6FE41E273A8D00CFA3FC /* LCDeleteTableViewCell.m in Sources */,
 				44EB6FCD1E273A4900CFA3FC /* AppDelegate.m in Sources */,
+				803D00061F2F1C810011DF7B /* LCSourcesModel.m in Sources */,
+				803D00041F2F1C810011DF7B /* TableViewController.m in Sources */,
 				44EB6FCA1E273A4900CFA3FC /* main.m in Sources */,
-				44EB6FE31E273A8D00CFA3FC /* TableViewController.m in Sources */,
+				803D00051F2F1C810011DF7B /* LCDeleteTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

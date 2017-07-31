@@ -8,7 +8,7 @@
 
 #import "TableViewController.h"
 #import "LCDeleteTableViewCell.h"
-
+#import "LCSourcesModel.h"
 @interface TableViewController ()<UITableViewDelegate,UITableViewDataSource,CellButtonClickedDelegate>
 {
     NSMutableArray *mutArray;//数据源
@@ -19,16 +19,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title=@"系统效果左划多个按钮";
     
     
-    
-    mutArray =[[NSMutableArray alloc]initWithObjects:@[@{@"top":@"a"},@{@"top1":@"b"},@{@"top2":@"c"}],@[@{@"top":@"aa"},@{@"top1":@"bb"},@{@"top2":@"cc"}],@[@{@"top":@"aaa"},@{@"top1":@"bbb"},@{@"top2":@"ccc"}], nil];
+    mutArray =[[NSMutableArray alloc]init];
     NSLog(@"%@",mutArray);
+    for (int i=0; i<10; i++) {
+        LCSourcesModel *model=[[LCSourcesModel alloc]init];
+        model.nameStr=[NSString stringWithFormat:@"%02d",i];
+        model.webAddressStr=[NSString stringWithFormat:@"https://github.com/LuochuanAD/OC-LCTableViewCell"];
+        if (i<3) {
+            model.descriptionStr=@"https://github.com/LuochuanAD";
+        }else if (i>=3&&i<6){
+            model.descriptionStr=@"https://github.com/LuochuanAD  https://github.com/LuochuanAD/OC-LCTableViewCell";
+        }else{
+            model.descriptionStr=@"https://github.com/LuochuanAD  https://github.com/LuochuanAD/OC-LCTableViewCell  QQ群:458922248 当前人数为个位,自愿哦. ";
+        }
+        model.hasDownload=@"0";//初始时默认未下载,该字段可以通过接口来获取
+        [mutArray addObject:model];
+    }
     
     
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
-    self.tableView.rowHeight=50;
+    
 }
 #pragma mark - Table view data source
 
@@ -41,13 +55,18 @@
     LCDeleteTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:strID];
     if (!cell) {
         cell=[[LCDeleteTableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:strID];
+        cell.delegate=self;//设置代理
     }
+    LCSourcesModel *model=mutArray[indexPath.row];
+    [cell setContentViewSourceModel:model];
     
-    [cell setMessageForCellString1:[mutArray[indexPath.row][0] objectForKey:@"top"] withString2:[mutArray[indexPath.row][1] objectForKey:@"top1"] withString3:[mutArray[indexPath.row][2] objectForKey:@"top2"]];
-    cell.delegate=self;//设置代理
     return cell;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //动态cell的高度
+    LCSourcesModel *model=mutArray[indexPath.row];
+    return model.cellHeight;
+}
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -59,22 +78,26 @@
     
 }
 //删除按钮处理事件
-- (void)cellDeletebuttonClickedWithCell:(UITableViewCell *)cell{
-    NSLog(@"删除");
+- (void)cellDeleteButtonClickedWithCell:(UITableViewCell *)cell{
     NSIndexPath *indexPath=[self.tableView indexPathForCell:cell];//通过传过来的cell 获取indexPath
      [mutArray removeObjectAtIndex:indexPath.row];//删除数据中的数据
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];//刷新行
     
 }
 //下载按钮处理事件
-- (void)cellSetTopbuttonClickedWithCell:(UITableViewCell *)cell{
-    NSLog(@"下载");
-    
+- (void)cellDownLoadButtonClickedWithCell:(UITableViewCell *)cell{
     NSIndexPath *indexPath=[self.tableView indexPathForCell:cell];
+    LCSourcesModel *model=mutArray[indexPath.row];
+    if ([model.hasDownload isEqualToString:@"1"]) {
+        model.hasDownload=@"0";
+    }else{
+        model.hasDownload=@"1";
+    }
+    LCDeleteTableViewCell *nowCell=(LCDeleteTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    [nowCell setContentViewSourceModel:model];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];//刷新行
     
 }
-
 
 
 @end

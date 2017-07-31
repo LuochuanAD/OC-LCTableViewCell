@@ -7,23 +7,56 @@
 //
 
 #import "LCDeleteTableViewCell.h"
+#import "LCSourcesModel.h"
 #define WINDOWS [UIScreen mainScreen].bounds.size
 
-
 @interface LCDeleteTableViewCell()
-
-@property (nonatomic)UILabel *lable1;
-@property (nonatomic)UILabel *lable2;
-@property (nonatomic)UILabel *lable3;
+{
+    NSString *downLoadLableText;
+}
 @end
 @implementation LCDeleteTableViewCell
 
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        _nameLable=[[UILabel alloc]init];
+        _webAddressLable=[[UILabel alloc]init];
+        _descriptionLable=[[UILabel alloc]init];
+        [self.contentView addSubview:_nameLable];
+        [self.contentView addSubview:_webAddressLable];
+        [self.contentView addSubview:_descriptionLable];
+    }
+    return self;
+}
+
+
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 - (void)layoutSubviews{
-    [self createManyButton];//创建cell右划出现的多个按钮
+    [self createManyButton];
+    /**此处我加个判断,是为了防止cell的位置向右偏移,因为此种情况我在iOS10.3.2,iphone6s上出现了.此处为解决方法*/
+    CGRect contentViewFrame = self.contentView.frame;
+    if (contentViewFrame.origin.x>0) {
+        contentViewFrame.origin.x=0;
+        self.contentView.frame=contentViewFrame;
+    }
+    _nameLable.frame=CGRectMake(20, 10, 40, 30);
+    _nameLable.textColor=[UIColor blackColor];
+    
+    _webAddressLable.frame=CGRectMake(CGRectGetMaxX(_nameLable.frame), CGRectGetMinY(_nameLable.frame),(WINDOWS.width-20*2)-40 , CGRectGetHeight(_nameLable.frame));
+    _webAddressLable.textColor=[UIColor blackColor];
+    _webAddressLable.adjustsFontSizeToFitWidth=YES;
+    
+    /**此时动态计算高度的控件的y坐标值为40.和LCSourcesModel的cellHeight设置的要一样*/
+    _descriptionLable.frame=CGRectMake(CGRectGetMinX(_nameLable.frame), CGRectGetMaxY(_nameLable.frame), WINDOWS.width-20*2, CGRectGetHeight(self.frame)-CGRectGetMaxY(_nameLable.frame));//此处的descriptionLable是动态设置高度
+    _descriptionLable.numberOfLines=0;
+    _descriptionLable.textColor=[UIColor blackColor];
+    /**注意:动态高度的控件的字号大小为固定的17.  和LCSourcesModel的cellHeight设置的字号要一样*/
+    _descriptionLable.font=[UIFont systemFontOfSize:17];
+    
 }
 
 - (void)createManyButton{
@@ -36,55 +69,63 @@
                 }
             }
             //在此自定义多个按钮,并添加(注:添加到的视图类型是:@"UITableViewCellDeleteConfirmationView")
-            UIButton *button1=[UIButton buttonWithType:UIButtonTypeCustom];
-            button1.backgroundColor=[UIColor redColor];
-            button1.frame=CGRectMake(0, 0, subView.frame.size.width/2, subView.frame.size.height);
-            [button1 setTitle:@"删除" forState:UIControlStateNormal];
-            [button1 addTarget:self action:@selector(button1Clicked:) forControlEvents:UIControlEventTouchUpInside];
-            [subView addSubview:button1];
-            UIButton *button2=[UIButton buttonWithType:UIButtonTypeCustom];
-            button2.backgroundColor=[UIColor orangeColor];
-            button2.frame=CGRectMake(subView.frame.size.width/2, 0, subView.frame.size.width/2, subView.frame.size.height);
-            [button2 setTitle:@"下载" forState:UIControlStateNormal];
-            [button2 addTarget:self action:@selector(button2Clicked:) forControlEvents:UIControlEventTouchUpInside];
-            [subView addSubview:button2];
+            _deleteButton=[self createDeleteButton];
+            _deleteButton.frame=CGRectMake(0, 0, subView.frame.size.width/2, subView.frame.size.height);
+            [subView addSubview:_deleteButton];
+            _downLoadButton=[self createDownLoadButton];
+            _downLoadButton.frame=CGRectMake(subView.frame.size.width/2, 0, subView.frame.size.width/2, subView.frame.size.height);
+            if (downLoadLableText.length==0) {
+                downLoadLableText=@"未知";
+            }
+            [_downLoadButton setTitle:downLoadLableText forState:UIControlStateNormal];
+            [subView addSubview:_downLoadButton];
         }
     }
 
 }
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {//cell上展示的布局
-        _lable1=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, WINDOWS.width, 15)];
-        _lable2=[[UILabel alloc]initWithFrame:CGRectMake(0, 15, WINDOWS.width, 15)];
-        _lable3=[[UILabel alloc]initWithFrame:CGRectMake(0, 30, WINDOWS.width, 15)];
-        [self addSubview:_lable1];
-        [self addSubview:_lable2];
-        [self addSubview:_lable3];
+//懒加载
+- (UIButton *)createDeleteButton{
+    if (!_deleteButton) {
+        _deleteButton=[UIButton buttonWithType:UIButtonTypeCustom];
+        _deleteButton.backgroundColor=[UIColor redColor];
+        [_deleteButton setTitle:@"删除" forState:UIControlStateNormal];
+        _deleteButton.titleLabel.font=[UIFont systemFontOfSize:14];
+        [_deleteButton addTarget:self action:@selector(deleteBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return self;
+    return _deleteButton;
 }
-- (void)setMessageForCellString1:(NSString *)str1 withString2:(NSString *)str2 withString3:(NSString *)str3{//赋值
-    _lable1.text=[NSString stringWithFormat:@"%@",str1];
-    _lable2.text=[NSString stringWithFormat:@"%@",str2];
-    _lable3.text=[NSString stringWithFormat:@"%@",str3];
-
-}
-- (void)button1Clicked:(UIButton *)button1{
-    if ([self.delegate respondsToSelector:@selector(cellDeletebuttonClickedWithCell:)]) {
-        [self.delegate cellDeletebuttonClickedWithCell:self];
+//懒加载
+- (UIButton *)createDownLoadButton{
+    if (!_downLoadButton) {
+        _downLoadButton=[UIButton buttonWithType:UIButtonTypeCustom];
+        _downLoadButton.backgroundColor=[UIColor orangeColor];
+        _downLoadButton.titleLabel.font=[UIFont systemFontOfSize:14];
+        [_downLoadButton addTarget:self action:@selector(downloadBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
+    return _downLoadButton;
 }
-- (void)button2Clicked:(UIButton *)button2{
-    if ([self.delegate respondsToSelector:@selector(cellSetTopbuttonClickedWithCell:)]) {
-        [self.delegate cellSetTopbuttonClickedWithCell:self];
+- (void)deleteBtnClicked:(UIButton *)button1{
+    if ([self.delegate respondsToSelector:@selector(cellDeleteButtonClickedWithCell:)]) {
+        [self.delegate cellDeleteButtonClickedWithCell:self];
     }
 }
-
-
-
+- (void)downloadBtnClicked:(UIButton *)button2{
+    if ([self.delegate respondsToSelector:@selector(cellDownLoadButtonClickedWithCell:)]) {
+        [self.delegate cellDownLoadButtonClickedWithCell:self];
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    // Configure the view for the selected state
+}
+- (void)setContentViewSourceModel:(LCSourcesModel *)model{
+    _nameLable.text=[NSString stringWithFormat:@"%@",model.nameStr];
+    _webAddressLable.text=[NSString stringWithFormat:@"%@",model.webAddressStr];
+    _descriptionLable.text=[NSString stringWithFormat:@"%@",model.descriptionStr];
+    if ([model.hasDownload isEqualToString:@"1"]) {
+        downLoadLableText=@"已下载";
+    }else{
+        downLoadLableText=@"下载";
+    }
+    /**注:每次赋值之后,滑动cell后,都会调用layoutSubviews方法*/
 }
 @end

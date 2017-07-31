@@ -7,15 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LCSourcesModel.h"
 @protocol CellButtonClickedDelegate <NSObject>
 
-- (void)cellDeletebuttonClickedWithCell:(UITableViewCell *)cell;
-- (void)cellSetTopbuttonClickedWithCell:(UITableViewCell *)cell;
+- (void)cellDeleteButtonClickedWithCell:(UITableViewCell *)cell;
+- (void)cellDownLoadButtonClickedWithCell:(UITableViewCell *)cell;
 @end
-
 
 @interface LCDeleteTableViewCell : UITableViewCell
 @property (assign, nonatomic)id<CellButtonClickedDelegate> delegate;
-- (void)setMessageForCellString1:(NSString *)str1 withString2:(NSString *)str2 withString3:(NSString *)str3;
+@property (nonatomic, strong) UILabel *nameLable;
+@property (nonatomic, strong) UILabel *webAddressLable;
+@property (nonatomic, strong) UILabel *descriptionLable;
+@property (nonatomic, strong) UIButton *deleteButton;//删除按钮
+@property (nonatomic, strong) UIButton *downLoadButton;//下载按钮
+
+- (void)setContentViewSourceModel:(LCSourcesModel *)model;
 @end
