@@ -98,7 +98,18 @@
     self.editingIndexPath = nil;
     
 }
-
+//iOS11及以上
+- (nullable UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(tvos){
+    UIContextualAction *action=[UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"         " handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        
+    }];//这里空格的长度是显示单个按钮的长度
+    UISwipeActionsConfiguration *ac=[UISwipeActionsConfiguration configurationWithActions:@[action,action]];
+    
+    return ac;
+}
+- (BOOL)tableView:(UITableView *)tableView shouldSpringLoadRowAtIndexPath:(NSIndexPath *)indexPath withContext:(id<UISpringLoadedInteractionContext>)context API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(tvos, watchos){
+    return YES;
+}
 //删除按钮处理事件
 - (void)cellDeleteButtonClickedWithCell:(UITableViewCell *)cell{
     NSIndexPath *indexPath=self.editingIndexPath;//[self.tableView indexPathForCell:cell];//通过传过来的cell 获取indexPath

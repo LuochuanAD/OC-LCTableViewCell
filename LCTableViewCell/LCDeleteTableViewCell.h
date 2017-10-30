@@ -16,7 +16,7 @@
 @end
 
 @interface LCDeleteTableViewCell : UITableViewCell
-@property (assign, nonatomic)id<CellButtonClickedDelegate> delegate;
+@property (weak, nonatomic)id<CellButtonClickedDelegate> delegate;
 @property (nonatomic, strong) UILabel *nameLable;
 @property (nonatomic, strong) UILabel *webAddressLable;
 @property (nonatomic, strong) UILabel *descriptionLable;
