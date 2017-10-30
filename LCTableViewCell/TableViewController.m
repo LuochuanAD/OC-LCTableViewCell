@@ -37,7 +37,7 @@
         }else if (i>=3&&i<6){
             model.descriptionStr=@"https://github.com/LuochuanAD  https://github.com/LuochuanAD/OC-LCTableViewCell";
         }else{
-            model.descriptionStr=@"https://github.com/LuochuanAD  https://github.com/LuochuanAD/OC-LCTableViewCell  QQ群:458922248 当前人数为个位,自愿哦. ";
+            model.descriptionStr=@"https://github.com/LuochuanAD  https://github.com/LuochuanAD/OC-LCTableViewCell 有问题,请留言. ";
         }
         model.hasDownload=@"0";//初始时默认未下载,该字段可以通过接口来获取
         [mutArray addObject:model];
@@ -50,10 +50,7 @@
 }
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    //if (self.editingIndexPath) {
         [self configIOS11ForCustomCellButton];
-    //}
-    
 }
 #pragma mark - Table view data source
 

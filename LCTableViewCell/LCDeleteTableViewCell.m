@@ -63,7 +63,7 @@
     for (UIView *subView in self.subviews) {
         if ([subView isKindOfClass:NSClassFromString(@"UITableViewCellDeleteConfirmationView")]) {
             subView.backgroundColor=[UIColor lightGrayColor];
-            for (UIButton *btn in subView.subviews) {
+            for (UIView *btn in subView.subviews) {
                 if ([btn isKindOfClass:[UIButton class]]) {
                     [btn removeFromSuperview];//将系统原生的删除按钮remove掉
                 }
