@@ -50,7 +50,7 @@
 }
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-        [self configIOS11ForCustomCellButton];
+    [self configIOS11ForCustomCellButton];
 }
 #pragma mark - Table view data source
 
@@ -107,9 +107,7 @@
     
     return ac;
 }
-- (BOOL)tableView:(UITableView *)tableView shouldSpringLoadRowAtIndexPath:(NSIndexPath *)indexPath withContext:(id<UISpringLoadedInteractionContext>)context API_AVAILABLE(ios(11.0)) API_UNAVAILABLE(tvos, watchos){
-    return YES;
-}
+
 //删除按钮处理事件
 - (void)cellDeleteButtonClickedWithCell:(UITableViewCell *)cell{
     NSIndexPath *indexPath=self.editingIndexPath;//[self.tableView indexPathForCell:cell];//通过传过来的cell 获取indexPath
