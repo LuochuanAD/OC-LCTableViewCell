@@ -13,6 +13,10 @@
 {
     NSMutableArray *mutArray;//数据源
 }
+@property (nonatomic, strong) UIButton *deleteButton;//删除按钮
+@property (nonatomic, strong) UIButton *downLoadButton;//下载按钮
+@property (nonatomic, assign) NSIndexPath *editingIndexPath;
+
 @end
 
 @implementation TableViewController
@@ -44,6 +48,13 @@
     self.tableView.dataSource=self;
     
 }
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    //if (self.editingIndexPath) {
+        [self configIOS11ForCustomCellButton];
+    //}
+    
+}
 #pragma mark - Table view data source
 
 
@@ -73,20 +84,37 @@
 //此方法不走,但是必须要写
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 }
+//iOS10及以下
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
   return @"                  ";//这里空格的长度是显示多个按钮的长度和
     
 }
+
+- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.editingIndexPath = indexPath;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.editingIndexPath = nil;
+    
+}
+
 //删除按钮处理事件
 - (void)cellDeleteButtonClickedWithCell:(UITableViewCell *)cell{
-    NSIndexPath *indexPath=[self.tableView indexPathForCell:cell];//通过传过来的cell 获取indexPath
+    NSIndexPath *indexPath=self.editingIndexPath;//[self.tableView indexPathForCell:cell];//通过传过来的cell 获取indexPath
      [mutArray removeObjectAtIndex:indexPath.row];//删除数据中的数据
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];//刷新行
+    if (IOS11) {
+        [self.tableView reloadData];
+    }
     
 }
 //下载按钮处理事件
 - (void)cellDownLoadButtonClickedWithCell:(UITableViewCell *)cell{
-    NSIndexPath *indexPath=[self.tableView indexPathForCell:cell];
+    NSIndexPath *indexPath=self.editingIndexPath;//[self.tableView indexPathForCell:cell];
     LCSourcesModel *model=mutArray[indexPath.row];
     if ([model.hasDownload isEqualToString:@"1"]) {
         model.hasDownload=@"0";
@@ -96,7 +124,79 @@
     LCDeleteTableViewCell *nowCell=(LCDeleteTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     [nowCell setContentViewSourceModel:model];
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];//刷新行
+    if (IOS11) {
+        [self.tableView reloadData];
+    }
+}
+- (void)configIOS11ForCustomCellButton{
+    if (IOS11) {
+        for (UIView *subview in self.tableView.subviews)
+        {
+            
+            if ([subview isKindOfClass:NSClassFromString(@"UITableViewWrapperView")])
+            {//Xocde8
+                for (UIView *subsubview in subview.subviews)
+                {
+                    if ([subsubview isKindOfClass:NSClassFromString(@"UISwipeActionPullView")])
+                    {
+                        [self createCustomCellButton:subsubview];
+                    }
+                }
+            }else if([subview isKindOfClass:NSClassFromString(@"UISwipeActionPullView")]){//Xcode9
+                [self createCustomCellButton:subview];
+            }
+        }
+    }
     
+}
+- (void)createCustomCellButton:(UIView *)cellView{
+    cellView.backgroundColor=[UIColor lightGrayColor];
+    
+    for (UIView *btn in cellView.subviews) {
+
+        if ([btn isKindOfClass:[UIButton class]]) {
+            [btn removeFromSuperview];//将系统原生的删除按钮remove掉
+
+        }
+    }
+    _deleteButton=[self createDeleteButton];
+    _deleteButton.frame=CGRectMake(0, 0, cellView.frame.size.width/2, cellView.frame.size.height);
+    
+    [cellView addSubview:_deleteButton];
+    _downLoadButton=[self createDownLoadButton];
+    _downLoadButton.frame=CGRectMake(cellView.frame.size.width/2, 0, cellView.frame.size.width/2, cellView.frame.size.height);
+    
+    LCSourcesModel *model=mutArray[self.editingIndexPath.row];
+    if ([model.hasDownload isEqualToString:@"1"]) {
+        [_downLoadButton setTitle:@"已下载" forState:UIControlStateNormal];
+    }else{
+        [_downLoadButton setTitle:@"下载" forState:UIControlStateNormal];
+    }
+
+    [cellView addSubview:_downLoadButton];
+    
+}
+//懒加载
+- (UIButton *)createDeleteButton{
+    if (!_deleteButton) {
+        _deleteButton=[UIButton buttonWithType:UIButtonTypeCustom];
+        _deleteButton.backgroundColor=[UIColor grayColor];
+        [_deleteButton setTitle:@"删除" forState:UIControlStateNormal];
+        [_deleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _deleteButton.titleLabel.font=[UIFont systemFontOfSize:14];
+        [_deleteButton addTarget:self action:@selector(cellDeleteButtonClickedWithCell:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _deleteButton;
+}
+//懒加载
+- (UIButton *)createDownLoadButton{
+    if (!_downLoadButton) {
+        _downLoadButton=[UIButton buttonWithType:UIButtonTypeCustom];
+        _downLoadButton.backgroundColor=[UIColor orangeColor];
+        _downLoadButton.titleLabel.font=[UIFont systemFontOfSize:14];
+        [_downLoadButton addTarget:self action:@selector(cellDownLoadButtonClickedWithCell:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _downLoadButton;
 }
 
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LCSourcesModel.h"
+#define IOS11 @available(iOS 11.0, *)
 @protocol CellButtonClickedDelegate <NSObject>
 
 - (void)cellDeleteButtonClickedWithCell:(UITableViewCell *)cell;
